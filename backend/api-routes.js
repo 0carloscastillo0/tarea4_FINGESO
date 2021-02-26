@@ -11,7 +11,8 @@ router.get('/', function (req, res) {
 });
 
 // Import contact controller
-var contactController = require('./contactController');
+var contactController = require('./controladores/contactController');
+var proyectoController = require('./controladores/proyectoController');
 
 // Contact routes
 router.route('/contacts')
@@ -23,6 +24,20 @@ router.route('/contacts/:contact_id')
     .patch(contactController.update)
     .put(contactController.update)
     .delete(contactController.delete);
-    
+
+
+// Añadir proyecto routes (???
+// Proyecto routes
+
+router.route('/proyectos')
+    .get(proyectoController.index)
+    .post(proyectoController.new);
+
+router.route('/proyectos/:proyecto_id')
+    .get(proyectoController.view)
+    .patch(proyectoController.update)
+    .put(proyectoController.update)
+    .delete(proyectoController.delete);
+
 // Export API routes
 module.exports = router;

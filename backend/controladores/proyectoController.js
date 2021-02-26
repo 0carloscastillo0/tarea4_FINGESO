@@ -1,9 +1,9 @@
 // Import contact model
-Contact = require('./contactModel');
+Proyecto = require('../modelos/proyectosModel');
 
 // Handle index actions
 exports.index = function (req, res) {
-    Contact.get(function (err, contacts) {
+    Proyecto.get(function (err, proyectos) {
         if (err) {
             res.json({
                 status: "error",
@@ -13,58 +13,57 @@ exports.index = function (req, res) {
         res.json({
             status: "success",
             message: "Contacts retrieved successfully",
-            data: contacts
+            data: proyectos
         });
     });
 };
 
-
 // Handle create contact actions
 exports.new = function (req, res) {
-    var contact = new Contact();
-    contact.name = req.body.name ? req.body.name : contact.name;
-    contact.gender = req.body.gender;
-    contact.email = req.body.email;
-    contact.phone = req.body.phone;
+    var proyecto = new Proyecto();
+    proyecto.nombre_titular = req.body.nombre_titular ? req.body.nombre_titular : proyecto.nombre_titular;
+    proyecto.nombre_proyecto = req.body.nombre_proyecto
+    proyecto.requisitos = req.body.requisitos;
+
     // save the contact and check for errors
-    contact.save(function (err) {
+    proyecto.save(function (err) {
         if (err)
             res.json(err);
         res.json({
-            message: 'New contact created!',
-            data: contact
+            message: 'New proyect created!',
+            data: proyecto
         });
     });
 };
 
 // Handle view contact info
 exports.view = function (req, res) {
-    Contact.findById(req.params.contact_id, function (err, contact) {
+    Proyecto.findById(req.params.proyecto_id, function (err, proyecto) {
         if (err)
             res.send(err);
         res.json({
             message: 'Contact details loading..',
-            data: contact
+            data: proyecto
         });
     });
 };
 
 // Handle update contact info
-exports.update = function (req, res) {Contact.findById(req.params.contact_id,
-    function (err, contact) {
+exports.update = function (req, res) {Proyecto.findById(req.params.proyecto_id,
+    function (err, proyecto) {
         if (err)
             res.send(err);
-        contact.name = req.body.name ? req.body.name : contact.name;
-        contact.gender = req.body.gender;
-        contact.email = req.body.email;
-        contact.phone = req.body.phone;
+        proyecto.nombre_titular = req.body.nombre_titular ? req.body.nombre_titular : proyecto.nombre_titular;
+        proyecto.nombre_proyecto = req.body.nombre_proyecto
+        proyecto.requisitos = req.body.requisitos;
+        
         // save the contact and check for errors
-        contact.save(function (err) {
+        proyecto.save(function (err) {
             if (err)
                 res.json(err);
             res.json({
-                message: 'Contact Info updated',
-                data: contact
+                message: 'proyecto Info updated',
+                data: proyecto
             });
         });
     });
@@ -72,14 +71,14 @@ exports.update = function (req, res) {Contact.findById(req.params.contact_id,
 
 // Handle delete contact
 exports.delete = function (req, res) {
-    Contact.remove({
-        _id: req.params.contact_id
-    }, function (err, contact) {
+    Proyecto.remove({
+        _id: req.params.proyecto_id
+    }, function (err, proyecto) {
         if (err)
             res.send(err);
         res.json({
             status: "success",
-            message: 'Contact deleted'
+            message: 'Proyecto deleted'
         });
     });
 };
