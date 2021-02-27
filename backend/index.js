@@ -24,6 +24,11 @@ app.use(bodyParser.urlencoded ({
     extended: true
 }));app.use(bodyParser.json());
 
+// Insertar luego de la siguiente línea
+var cors = require('cors') // Dentro de importaciones
+app.use(cors()) // Dentro de ejecuciones
+
+
 // Import routes
 let apiRoutes = require("./api-routes")
 
