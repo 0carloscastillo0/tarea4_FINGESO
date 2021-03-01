@@ -11,13 +11,13 @@ router.get('/', function (req, res) {
 });
 
 // Import contact controller
-var clienteController = require('/controladores/clienteController')
+var clienteController = require('./controladores/clienteController');
 var contactController = require('./controladores/contactController');
 var especialistaController = require('./controladores/especialistaController');
-var proyectoController = require('./controladores/formularioPostulacionController');
+var formularioPostulacionController = require('./controladores/formularioPostulacionController');
 var proyectoController = require('./controladores/proyectoController');
-var requisitosController = require('/controladores/requisitosController')
-var proyectoController = require('./controladores/usuarioController');
+var requisitosController = require('./controladores/requisitosController');
+var usuarioController = require('./controladores/usuarioController');
 
 
 // Contact routes
@@ -54,6 +54,7 @@ router.route('/proyectos/:proyecto_id')
     .get(proyectoController.view)
     .patch(proyectoController.update)
     .put(proyectoController.update)
+    .delete(proyectoController.delete);
 
 //------------------------------------------------------------------------------
 //especialista routes
@@ -69,11 +70,11 @@ router.route('/especialistas/:especialista_id')
 
 //------------------------------------------------------------------------------
 //formulariosPostulacion routes
-router.route('/formulariosPostulaciones')
+router.route('/formularioPostulaciones')
     .get(proyectoController.index)
     .post(proyectoController.new);
 
-router.route('/formulariosPostulaciones/:formularioPostulacion_id')
+router.route('/formularioPostulaciones/:formularioPostulacion_id')
     .get(formularioPostulacionController.view)
     .patch(formularioPostulacionController.update)
     .put(formularioPostulacionController.update)

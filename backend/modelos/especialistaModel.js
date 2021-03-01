@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 
 // Setup schema
-var contactSchema = mongoose.Schema({
+var especialistaSchema = mongoose.Schema({
     descripcionEmpresa: {
         type: String,
         required: true

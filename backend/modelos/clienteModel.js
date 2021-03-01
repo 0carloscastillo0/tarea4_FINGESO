@@ -11,6 +11,6 @@ var clienteSchema = mongoose.Schema({
 
 // Export Cliente model
 var Cliente = module.exports = mongoose.model('cliente',
-contactSchema);module.exports.get = function (callback, limit) {
+clienteSchema);module.exports.get = function (callback, limit) {
     Cliente.find(callback).limit(limit);
 }

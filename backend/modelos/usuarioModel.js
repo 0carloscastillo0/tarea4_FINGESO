@@ -1,6 +1,6 @@
 //contactModel.js
 var mongoose = require('mongoose');
-s
+
 // Setup schema
 var usuarioSchema = mongoose.Schema({
     nombre: {

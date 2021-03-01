@@ -1,5 +1,5 @@
 // Import contact model
-Formulario = require('../modelos/formularioModel');
+Formulario = require('../modelos/formularioPostulacionModel');
 
 // Handle index actions
 exports.index = function (req, res) {
